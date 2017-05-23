@@ -1,0 +1,26 @@
+#wrapper{
+	margin:8px;
+}
+.glyphicon.glyphicon-globe {
+    font-size: 70px;
+     float:left;
+}
+
+
+
+.contact{
+	clear: both;
+	padding-top:80px;
+}
+
+.contact .glyphicon{
+	font-size:20px;
+	
+}
+
+#contact_us{
+float: left;
+padding-left: 15px;
+
+}
+
