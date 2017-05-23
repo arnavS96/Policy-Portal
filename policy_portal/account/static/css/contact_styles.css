@@ -11,16 +11,25 @@
 .contact{
 	clear: both;
 	padding-top:80px;
+
 }
 
 .contact .glyphicon{
 	font-size:20px;
+	clear: both;
+    
+}
+
+.glyphicon.glyphicon-envelope{
+	font-size:20px;
+	clear: both;
 	
 }
 
 #contact_us{
+	width:225px;
 float: left;
 padding-left: 15px;
-
+border-bottom-style: solid;
 }
 
