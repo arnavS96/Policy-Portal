@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
+from policy_portal.views import loggedin, register, registration_complete
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -40,6 +42,11 @@ from django.conf.urls.static import static
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 #Add Django site authentication urls (for login, logout, password management)
-urlpatterns += [
-    url('^accounts/', include('django.contrib.auth.urls')),
+urlpatterns+= [
+     url(r'^accounts/login/$', login, name='login'),
+    url(r'^accounts/logout/$', logout, name='logout'),
+    url(r'^accounts/loggedin/$',loggedin, name='loggedin'),
+     # Registration URLs
+    url(r'^accounts/register/$', register, name='register'),
+    url(r'^accounts/register/complete/$', registration_complete, name='registration_complete'),
 ]
