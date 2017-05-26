@@ -26,6 +26,8 @@ urlpatterns = [
 from django.conf.urls import include
 urlpatterns += [
          url(r'^account/', include('account.urls')),
+         url(r'^team_register/', include('team_register.urls')),
+                 
 ]
 
 #Add URL maps to redirect the base URL to our application

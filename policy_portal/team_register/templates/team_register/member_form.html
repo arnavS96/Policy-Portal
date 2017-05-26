@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{%for i in "xxx"%}
+<form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit" />
+    
+</form>
+{%endfor%}
+<h2>{{team.team_name}}</h2>
+<h2>aaaa</h2>
+
+{% endblock %}
