@@ -17,6 +17,9 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
 from policy_portal.views import loggedin, register, registration_complete
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,7 +31,8 @@ urlpatterns += [
          url(r'^account/', include('account.urls')),
          url(r'^team_register/', include('team_register.urls')),
                  
-]
+]         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
 
 #Add URL maps to redirect the base URL to our application
 from django.views.generic import RedirectView

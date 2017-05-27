@@ -5,8 +5,9 @@ from django import forms
 class RegisterForm(forms.Form):
     team_name = forms.CharField(required=True)
     total_members= forms.EmailField(required=True)
-    content = forms.CharField(
-        required=True,
-        widget=forms.Textarea
+    city= forms.CharField(required=True)
+    state= forms.CharField(required=True)
+    docfile = forms.ImageField(
+        label='Select a file',
+        help_text='max. 42 megabytes'
     )
-        
