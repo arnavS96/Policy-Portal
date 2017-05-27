@@ -1,9 +1,65 @@
 from django.shortcuts import render
-from .forms import RegisterForm
+from .forms import TeamForm, MemberForm
+from django.http import HttpResponseRedirect
+
+def team_register(request):
+    if request.method == 'POST':
+        form = TeamForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # return render()
+    else:
+        form = TeamForm()
+    return render(request, 'team_register_form.html', {
+        'form': form
+    })
+
+def member_register(request):
+    if request.method == 'POST':
+        form = MemberForm(request.POST, request.FILES, initial={"team":"2"})
+        if form.is_valid():
+            form.save()
+            # return HttpResponseRedirect('index')
+    else:
+        form = MemberForm()
+    return render(request, 'member_register_form.html', {
+        'form': form
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Create your views here.
-def team_registration(request):
-	form_class = RegisterForm
-	return render(request, 'team_register_form.html', {'form': form_class,})
+# def team_registration(request):
+# 	form_class = RegisterForm
+# 	if request.method =='POST':
+# 		form = RegisterForm(request.POST, request.FILES)
+# 		if form.is_valid():
+#             newdoc = Document(docfile=request.FILES['docfile'])
+#             newdoc.save()
+
+#             # Redirect to the document list after POST
+#             return HttpResponseRedirect(reverse('team_registration'))
+#     else:
+#         form = RegisterForm()  # A empty, unbound form
+
+# 	return render(request, 'team_register_form.html', {'form': form_class,})
 
 
 	# from django.views.generic.edit import CreateView, UpdateView, DeleteView

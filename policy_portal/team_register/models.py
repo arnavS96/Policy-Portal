@@ -9,8 +9,8 @@ class Member(models.Model):
 	member_name = models.CharField(max_length=50, help_text="Member's name")
 	member_email = models.EmailField(max_length=50, help_text="Member's Email ID")
 	member_contact=models.IntegerField(help_text="Member's Contact Number")
-	team= models.ForeignKey('Team', null=False)
-	docfile = models.ImageField(upload_to='documents/%Y/%m/%d')
+	# team= models.ForeignKey('Team', null=True)
+	id_proof = models.ImageField(upload_to='ID_proofs')
 
 
 class Team(models.Model):

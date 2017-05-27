@@ -56,3 +56,5 @@ urlpatterns+= [
     url(r'^accounts/register/$', register, name='register'),
     url(r'^accounts/register/complete/$', registration_complete, name='registration_complete'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

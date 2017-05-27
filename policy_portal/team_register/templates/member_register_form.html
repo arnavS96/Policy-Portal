@@ -12,11 +12,14 @@
 <div id= "wrapper">
 
 <h3> Register your team here </h3>
-<form role="form" action="" method="post">
+
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit"><a href="{% url 'member_register' %}">Save And Continue</a></button>
-</form>
+    <button type="submit">Upload</button>
+  </form>
+
+  <p><a href="{% url 'index' %}">Return to home</a></p>
 {% else %}
 <h1> Sign In to view this page</h1>
 {%endif%}
