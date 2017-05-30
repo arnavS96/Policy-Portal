@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from .models import Team, Member
 from django import forms
+from django.contrib.auth.models import User
 # # our new form
 # class RegisterForm(forms.Form):
 #     team_name = forms.CharField(required=True)
@@ -12,6 +13,10 @@ from django import forms
 #         help_text='max. 42 megabytes'
 #     )
 
+# class UserForm(forms.ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ('first_name', 'last_name', 'email')
 
 class MemberForm(forms.ModelForm):
     class Meta:

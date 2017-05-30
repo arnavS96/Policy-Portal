@@ -4,7 +4,7 @@
 
 
 {% block styles %}
-# <link rel="stylesheet" href="{% static 'team_register_styles.css' %}" type='text/css'>
+<link rel="stylesheet" href="{% static 'team_register_styles.css' %}" type='text/css'>
 {% endblock %}
 
 {% block content %}
@@ -14,9 +14,13 @@
 <h3> Register your team here </h3>
 <form role="form" action="" method="post">
     {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit"><a href="{% url 'member_register' %}">Save And Continue</a></button>
+    {{form.as_p }}
+    
+
+    <!-- <button type="submit">Upload</button> -->
+    <button type="submit"><a href="{% url 'success_team' %}">Save And Continue</a></button>
 </form>
+<!-- <button type="submit"><a href="{% url 'success_team' %}">Save And Continue</a></button> -->
 {% else %}
 <h1> Sign In to view this page</h1>
 {%endif%}
