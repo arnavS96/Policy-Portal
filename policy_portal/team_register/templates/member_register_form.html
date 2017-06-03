@@ -8,20 +8,24 @@
 {% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<div id= "wrapper">
+<div id="wrapper">
+        <h3>Add your Team Members here</h3>
+        <h3>------------------------------------</h3>
 
-<h3> Register your team here </h3>
+  <form role="form" method="post" enctype="multipart/form-data">
+        
+{% csrf_token %}
+{{ formset.management_form }}
+{% for form in formset %}
+{{form.as_p}}
+  <h3>------------{{form.id}}------------------------</h3>
+  <br> </br>
+{% endfor %}
 
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Upload</button>
-  </form>
-
-  <p><a href="{% url 'index' %}">Return to home</a></p>
-{% else %}
-<h1> Sign In to view this page</h1>
-{%endif%}
+<input type="submit" class="btn btn-primary" value="Submit">
+</form>
 </div>
+
 {%endblock%}
+
+

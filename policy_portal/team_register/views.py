@@ -1,82 +1,71 @@
 from django.shortcuts import render
-from .forms import TeamForm, MemberForm
+from .forms import TeamModelForm, MemberForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.contrib.auth.models import User
-from .models import Team
+from .models import TeamModel, Member
 from django.contrib.auth.decorators import login_required
 from django.db import transaction
+from django.conf import settings
+from django.forms import ModelForm, formset_factory,modelformset_factory, inlineformset_factory
 
+member_number=5;
 
 def success_team(request):
     return render(request, 'success.html')
 
-def team_register(request):
-    print(request.user)
-    if request.user.is_authenticated():
-        print(request.method)
-        if request.method == 'POST':
-            form = TeamForm(request.POST, user=request.user)\
+def registration_successful(request):
+    return render(request, 'team_registration_successful.html')
 
-            #print(form.is_valid())# this is weird kuch to print hona chaieh cosole me Sir iyou know.Thats why dusra option try kar rha tha that i found online.Let me show it to 
-            if form.is_valid():
+
+
+
+def team_register(request):
+    if request.user.is_authenticated():
+        
+        #if request.method == "POST": 
+        if request.method=='POST':
             
-                
+            form = TeamModelForm(request.POST)
+            if form.is_valid():            
                 team= form.save(commit=False)
-                print(team) 
-                team.team_admin=request.users
+                member_number=team.total_members
+                
+                team.team_admin=request.user
+                # print(member) 
                 team.save()
                 return redirect('success_team')
         else:
-            form = TeamForm()
+            form = TeamModelForm()
+            print(request.user)
         return render(request, 'team_register_form.html', {
             'form': form })
-#done ab vo run kr jo savenhi ho rha ok
-#sir admin mein arnavtest nhi bana ok dhekhta hu 
-
-# @login_required
-# @transaction.atomic
-# def team_register(request):
-#     if request.method == 'POST':
-#         user_form = UserForm(request.POST, instance=request.user)
-#         team_form = TeamForm(request.POST, instance=request.user.team)
-#         if user_form.is_valid() and team_form.is_valid():
-#             user_form.save()
-#             team_form.save()
-#             # messages.success(request, _('Your profile was successfully updated!'))
-#             return redirect('success_team')
-#         else:
-#             messages.error(request, _('Please correct the error below.'))
-#     else:
-#         user_form = UserForm(instance=request.user)
-#         team_form = TeamForm(instance=request.user.team)#change kr teamko ?? yes sir, thoda boht try kar rha tha khud, original version  stackoverflow pe hain.Shall i get it back to that form?, ha do it once Ok
-#     return render(request, 'profiles/profile.html', {
-#         'user_form': user_form,
-#         'team_form': team_form 
-#     })
-    
 
 
+print(member_number)
 
 def member_register(request):
-    if request.method == 'POST':
-        form = MemberForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('index')
-    else:
-        form = MemberForm()
-    return render(request, 'member_register_form.html', {
-        'form': form
-    })
-
-
-
-
-
-
-
-
+    if request.user.is_authenticated():
+        MemberFormSet= formset_factory(MemberForm,extra=member_number)
+        if request.method=='POST':
+            
+            formset = MemberFormSet(request.POST,request.FILES)
+            print(formset)
+            if formset.is_valid():
+                
+                for form in formset:
+                    if form.is_valid():
+                        print(form)
+                        member=form.save(commit=False)
+                        member.team=request.user
+                        member.save()
+                        
+                return redirect('registration_successful')
+        else:
+            formset = MemberFormSet()
+            
+        return render(request, 'member_register_form.html', {
+            'formset': formset })
 
 
 

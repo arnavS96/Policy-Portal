@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block styles %}
+ <link rel="stylesheet" href="{% static 'team_register_styles.css' %}" type='text/css'>
+{% endblock %}
+
+{% block content %}
+<div id="wrapper">
+<h3>Team Registered Successfully</h3>
+<button><a href="#">Click here to go to the Dashboard</a></button>
+</div>
+
+{%endblock%}
+
