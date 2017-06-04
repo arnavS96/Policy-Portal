@@ -39,11 +39,11 @@ class Member(models.Model):
 		return self.member_name
 
 class TeamModel(models.Model):
-	team_name = models.CharField(max_length=50, help_text="Enter your team name")
+	team_name = models.CharField(max_length=50)
 	member_number = ((1,1),(2,2),(3,3),(4,4),(5,5))
-	total_members = models.IntegerField(choices=member_number, blank=False, default='1', help_text='Total Team Members')
-	city = models.CharField(max_length=200, help_text="City/Town")
-	state = models.CharField(max_length=200, help_text="State")
+	total_team_members = models.IntegerField(choices=member_number, blank=False, default='1')
+	city = models.CharField(max_length=200)
+	state = models.CharField(max_length=200)
 	team_admin=models.ForeignKey(User,null=True,blank=True) 
 	    
 	def __str__(self):

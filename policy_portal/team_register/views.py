@@ -29,7 +29,7 @@ def team_register(request):
             form = TeamModelForm(request.POST)
             if form.is_valid():            
                 team= form.save(commit=False)
-                member_number=team.total_members
+                member_number=team.total_team_members
                 
                 team.team_admin=request.user
                 # print(member) 

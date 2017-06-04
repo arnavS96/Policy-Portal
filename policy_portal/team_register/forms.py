@@ -34,5 +34,5 @@ class MemberForm(forms.ModelForm):
 class TeamModelForm(forms.ModelForm):
     class Meta:
         model = TeamModel
-        fields = ('team_name','total_members','city', 'state', )
+        fields = ('team_name','total_team_members','city', 'state', )
 # 

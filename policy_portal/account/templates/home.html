@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block styles %}
+ <link rel="stylesheet" href="{% static 'home_styles.css' %}" type='text/css'>
+{% endblock %}
+
+{% block content %}
+
+
+
+       {% if user.is_authenticated %}
+
+<div id="vision">
+<div id="visionHeader"><h2 align="center"> Vision of Policy Internship </h2></div>
+
+<h4 style="color:#333333">  
+To bring ground level changes in the field of road-safety by analysing real-life problems, surveying and designing feasible solutions and getting them implemented with the help of government authorities, thereby contributing towards IRSC’s vision of reducing road accidents by half by 2020.
+</h4>
+</div>
+<br></br>
+<h4 align='center'>Select the appropriate Phase to read it's description</h4>
+
+	<div id="nav">
+      
+
+      	<a href="#"><input type="submit" class="btn btn-primary" value="Phase-I"></a>
+		<a href="#"><input type="submit" class="btn btn-primary"  value="Phase-II"></a>
+		<a href="#"><input type="submit" class="btn btn-primary" value="Phase-III"></a>
+		<a href="#"><input type="submit" class="btn btn-primary" value="Phase-IV"></a>
+	</div>
+
+	
+<div class="phase">
+	<div class="phaseI">
+
+		<h3 align="center">Phase I</h3>
+ 
+<ol type="1">
+			<li>Identification of a location which has problems related to road-safety (with many cases of accidents or an identified black-spot) or a major traffic related issue. 
+			The problems can be related to various topics like - traffic signal, speed-breaker, road-signs, sight lines, crossing, junction, roundabouts etc. Refer to the checklists (given in phase 2) for more help.
+			The problem should affect a large number of stakeholders on the road and would have caused a large number of accidents previously.
+			</li>
+            
+			<li>Use of diagrams and maps to properly depict the location and the problems.</li>
+ 
+			<li>Use of pictures to support the problem statements. Points will be provided for the quality of problem statements and the rationality behind them.(Points - 10)</li>
+ 
+			<li>Make a proper document supporting the need to study that locality. Use newspaper clippings, FIRs, news video clippings, etc. to formally support the “need for study”.</li>
+ 
+			<li>You will be awarded points on the strength of proofs/formal reports, which you will be providing for supporting your study. (Points weightage- FIRs >News>Images - Total -10) FIR’s would be more appreciated.</li>
+ 
+			<li>Depict the stakeholders who are affected from the problems and also the nature in which they are affected. (Points-5)</li>
+ 
+			<li>The deadline to submit report of  phase 1 shall be 15 days after the start of internship. However, the documentation of proofs like FIR’s can be submitted anytime before the end of the internship.</li>
+		</ol>
+
+
+	</div>	
+
+
+	<div class="phaseII">
+
+		<h3 align="center">Phase II</h3>
+ 
+<ol type="1">
+ 
+		<li>Interview the stakeholders of the locality to further analyze the existing problems. Take possible suggestions of solutions from them. Please refer to the checklists while taking the surveys. (The questions of checklists should be kept in mind while conducting the surveys). </li>
+ 
+		<li>There should be interviewing of at least 5 categories of stakeholders (categories include - private vehicles, policemen, shopkeepers, auto drivers, e-rickshaw drivers, cab drivers, truck drivers, bus drivers etc.)</li>
+ 
+		<li>Record videos, audios etc of the surveys (minimum 8 audios/videos of at least 2 min each).</li>
+ 
+		<li>Briefly answer the questions in the checklists (concerning the identified problems) and further brief it out in phase 4.</li>
+ 
+		<li>The checklist questions are separated topic- wise. You have to prepare summarized answers for relevant topics from the checklist questions.
+		By relevant topics, we mean, topics which are related to the problem statements from phase 1.</li>
+ 
+		<li>It is not necessary to answer all the questions from a topic, but only summarized answers in short points have to be given about the status of the relevant topics about the locality.</li>
+ 
+		<li>The answers should be supported by statistical data of the surveys taken.</li>
+
+		<li>Points would be awarded on the quality of questions asked in the survey and relevancy of the survey with respect to the  statements. (Points - Answers of relevant checklist topics - 10, Videos- 10, Audios - 5)</li>
+ 
+		<li>The deadline for submitting this phase’s report would be 10 days after Phase 1.</li>
+		</ol>
+
+
+
+	</div>
+
+
+	<div class="phaseIII">
+
+		<h3 align="center">Phase III</h3>
+ 
+        <ol type="1">
+
+ 			<li>You have to do a proper case-study analysis in order to find out the most feasible solutions to the problem.
+			You have to conduct surveys in this phase for verification of the solutions that  have been identified. The solution statements must be supported by statistical data from surveys and case-study.</li>
+ 
+			<li>The solution should be described in detail with proper design and technicalities required for implementation. At this stage, our expert panel would be there to help you.</li>
+ 
+			<li>Points would be awarded on the clarity, feasibility and efficiency of the solution. (Points-25)</li>
+ 
+			<li>The deadline for submitting this phase’s report would be 15 days after Phase II.</li>
+
+		</ol>
+
+
+
+	</div>
+
+	<div class="phaseIV">
+
+		<h3 align="center">Phase IV</h3>
+ 
+        <ol type="1">
+
+			<li>Get your solution implemented by visiting the relevant local authorities. Make a summarized final report of all the 3 phases for presenting to local authorities.</li>
+ 
+			<li>You can carry the hard-copy of the formal offer letter sent by IRSC to the authorities. </li>
+ 
+			<li>We would guide you for “which authority to be visited”.</li>
+ 
+			<li>Points would be awarded for the strength of proofs presented. (Points - Stamp and Sign on formal document for acceptance of solution - 15, Stamp and sign on report - 5, Any other relevant proof -5)</li>
+ 
+			<li>Deadline to get the solution implemented is December, 2017.</li>
+
+		</ol>
+
+
+
+	</div>	
+
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script>
+
+$('.phase  div').hide();
+
+$('#nav a').click(function() {
+    console.log($(this).index('a'));
+    var $div = $('.phase  div').eq($(this).index('#nav a'));
+    $div.show();
+    $('.phase div').not($div).hide();
+});
+</script>
+{% else%}
+<h2 align='center'>Welcome to IRSC Policy Portal</h2>
+
+<div id="signInWarning">
+	<h5 align='center' >*SignIn/SignUp to continue</h5>
+</div>
+   {% endif %} 
+
+
+{%endblock%}
+
