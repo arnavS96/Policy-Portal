@@ -30,6 +30,7 @@ from django.conf.urls import include
 urlpatterns += [
          url(r'^account/', include('account.urls')),
          url(r'^team_register/', include('team_register.urls')),
+         url(r'^dashboard/', include('dashboard.urls')),
                  
 ]         + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

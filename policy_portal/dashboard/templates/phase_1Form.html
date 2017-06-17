@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<div id= "wrapper">
+ <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+	
+	
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+
+{% else %}
+<h1> Sign In to view this page</h1>
+{%endif%}
+</div>
+{%endblock%}

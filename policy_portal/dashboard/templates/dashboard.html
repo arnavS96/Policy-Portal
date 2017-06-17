@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+
+{% block content %}
+{% if user.is_authenticated %}
+<div id= "wrapper">
+
+<a href="{% url 'phase_1_upload'%}">Phase 1</a>
+
+{% else %}
+<h1> Sign In to view this page</h1>
+{%endif%}
+</div>
+{%endblock%}
